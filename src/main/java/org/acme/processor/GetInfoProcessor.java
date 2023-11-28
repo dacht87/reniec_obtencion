@@ -3,7 +3,7 @@ package org.acme.processor;
 import org.apache.camel.Processor;
 import org.apache.camel.Exchange;
 import org.acme.bean.Respuesta;
-import org.acme.bean.RespuestaToken;
+import org.acme.bean.Respuesta2;
 import org.acme.repository.PersonaRepository;
 import org.acme.model.PersonaModel;
 
@@ -13,11 +13,11 @@ import java.util.List;
 public class GetInfoProcessor implements Processor{
 
     PersonaRepository personaRepository;
-    String privateKeyLocation;
+    
         
-    public GetInfoProcessor(PersonaRepository personaRepository,String privateKeyLocation){
+    public GetInfoProcessor(PersonaRepository personaRepository){
         this.personaRepository = personaRepository;
-        this.privateKeyLocation = privateKeyLocation;
+ 
     }
 
     public void process(Exchange exchange) throws Exception {
@@ -25,7 +25,7 @@ public class GetInfoProcessor implements Processor{
         System.out.println("=====GET INFOR PROCESOR");  
 
         //Header query = exchange.getIn().getBody(Header.class);
-        RespuestaToken query = exchange.getIn().getBody(RespuestaToken.class);
+        Respuesta2 query = exchange.getIn().getBody(Respuesta2.class);
 
         System.out.println(query.tipoConsulta);
         //System.out.println(validateToken(query.token));
