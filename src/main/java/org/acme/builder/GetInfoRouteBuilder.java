@@ -19,18 +19,23 @@ public class GetInfoRouteBuilder extends RouteBuilder {
    private JacksonDataFormat formatRpta2 = new JacksonDataFormat(Respuesta2.class);
    //private BindyFixedLengthDataFormat camelDataFormat = new BindyFixedLengthDataFormat(Header.class);
 
-     @ConfigProperty(name = "app.jms.queue-validated")
-    private String queue_in;
+    //  @ConfigProperty(name = "app.jms.queue-validated")
+    // private String queue_in;
 
-    @ConfigProperty(name = "app.jms.queue-processed")
-    private String queue_out;
+    // @ConfigProperty(name = "app.jms.queue-processed")
+    // private String queue_out;
+
+    @ConfigProperty(name = "app.camel.rest.route.distribute")
+    private String route;
+
+    @ConfigProperty(name = "app.camel.rest.host.get-info")
+    private String host_get_info;
+
+    @ConfigProperty(name = "app.camel.rest.port.get-info")
+    private int port_get_info;
 
     @Inject
     PersonaRepository personaRepository;
-
-    // @Inject
-    // @ConfigProperty(name = "smallrye.jwt.sign.key.location")
-    // String privateKeyLocation; // Ruta al archivo privateKey.pem
 
     @Override
     public void configure() throws Exception {
@@ -50,26 +55,21 @@ public class GetInfoRouteBuilder extends RouteBuilder {
 
         restConfiguration()
             .component("platform-http")
-            .host("0.0.0.0")
-            .port(8090);
+            .host(host_get_info)
+            .port(port_get_info);
 
        
         rest("/receptor")
             .post("/mensaje")
             .to("direct:procesarMensaje");
 
-            // from("direct:enviarAlMicroservicioC")
-            // .setBody(simple("Mensaje enviado desde Microservicio B"))
-            // //.to("http://localhost:8091/receptor/mensaje?bridgeEndpoint=true")
-            // .to("http://localhost:8091?bridgeEndpoint=true")
-            // .log("Respuesta del Microservicio C: ${body}");
-        
         from("direct:procesarMensaje")
              .log("Received a message - ${body} - sending to processed")
              .unmarshal(formatRpta2)
             .process(new GetInfoProcessor(personaRepository))
             .marshal(formatRpta)
-            .to("http://localhost:8091?bridgeEndpoint=true");
+            .to(route);
+           
 
     }
 
