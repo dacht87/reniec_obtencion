@@ -17,14 +17,7 @@ public class GetInfoRouteBuilder extends RouteBuilder {
 
    private JacksonDataFormat formatRpta = new JacksonDataFormat(Respuesta.class);
    private JacksonDataFormat formatRpta2 = new JacksonDataFormat(Respuesta2.class);
-   //private BindyFixedLengthDataFormat camelDataFormat = new BindyFixedLengthDataFormat(Header.class);
-
-    //  @ConfigProperty(name = "app.jms.queue-validated")
-    // private String queue_in;
-
-    // @ConfigProperty(name = "app.jms.queue-processed")
-    // private String queue_out;
-
+ 
     @ConfigProperty(name = "app.camel.rest.route.distribute")
     private String route;
 
@@ -39,19 +32,6 @@ public class GetInfoRouteBuilder extends RouteBuilder {
 
     @Override
     public void configure() throws Exception {
-
-        // //JsonWebToken jwt = parser.verify(jwtCookie, secret);
-
-        // System.out.println("=====inicia marshall");  
-
-        // //from(String.format("jms:queue:%s",queue_in))
-        // from("direct:obtenerInformacion")
-        //     .log("Received a message - ${body} - sending to processed")
-        //     .unmarshal(formatRptaToken)
-        //     .process(new GetInfoProcessor(personaRepository,privateKeyLocation))
-        //     .marshal(formatRpta)
-        // //.to(String.format("jms:queue:%s",queue_out));
-        // .to("direct:enrutamiento");
 
         restConfiguration()
             .component("platform-http")

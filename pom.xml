@@ -76,10 +76,10 @@
       <groupId>org.apache.camel.quarkus</groupId>
       <artifactId>camel-quarkus-jms</artifactId>
     </dependency>
-    <dependency>
+    <!-- <dependency>
       <groupId>org.apache.camel.quarkus</groupId>
       <artifactId>camel-quarkus-opentelemetry</artifactId>
-    </dependency>
+    </dependency> -->
     <dependency>
       <groupId>org.apache.camel.quarkus</groupId>
       <artifactId>camel-quarkus-bean</artifactId>
@@ -111,6 +111,10 @@
     <dependency>
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-openshift</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-jdbc-mysql</artifactId>
     </dependency>
     <dependency>
       <groupId>io.quarkus</groupId>
