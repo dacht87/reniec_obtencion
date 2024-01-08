@@ -12,7 +12,7 @@ public class Respuesta2 {
 
     public String fragmentacion;
 
-    public String TTL;
+    public String ttl;
 
     public String tipoConsulta;
 
@@ -49,7 +49,7 @@ public class Respuesta2 {
     }
 
     public String getTramaHeader() {
-        return version + lonCabecera + tipoServicio + longTotalTrama + fragmentacion + TTL + tipoConsulta + caractVerif + codInstitucion + codServerReniec + agenciaInstSolic + usuarioFinalInst + hostFinalInst + reservado;
+        return version + lonCabecera + tipoServicio + longTotalTrama + fragmentacion + ttl + tipoConsulta + caractVerif + codInstitucion + codServerReniec + agenciaInstSolic + usuarioFinalInst + hostFinalInst + reservado;
     }
 
 

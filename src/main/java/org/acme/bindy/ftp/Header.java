@@ -26,7 +26,7 @@ public class Header {
     public String fragmentacion;
 
     @DataField(pos = 43, length=9)
-    public String TTL;
+    public String ttl;
 
     @DataField(pos = 52, length=1)
     public String tipoConsulta;
@@ -56,7 +56,7 @@ public class Header {
     public String subTrama;
 
     public String getTramaHeader() {
-        return version + lonCabecera + tipoServicio + longTotalTrama + fragmentacion + TTL + tipoConsulta + caractVerif + codInstitucion + codServerReniec + agenciaInstSolic + usuarioFinalInst + hostFinalInst + reservado;
+        return version + lonCabecera + tipoServicio + longTotalTrama + fragmentacion + ttl + tipoConsulta + caractVerif + codInstitucion + codServerReniec + agenciaInstSolic + usuarioFinalInst + hostFinalInst + reservado;
     }
 
 
